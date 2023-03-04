@@ -56,12 +56,26 @@ def model_selection(X,Y):
     results_df = pd.DataFrame(results, columns=['Model Name', 'F1_Mean', 'F1_Standard Deviation'])
     return results_df
 
+def Backtesting(df, X_test, X_test_scaled, classifier,trading_fee) :
+    # Create a new empty predictions DataFrame using code provided below. 
+    classifier_df = pd.DataFrame(index=X_test.index)
+    classifier_df["predicted_signal"] = classifier.predict(X_test_scaled)
+    classifier_df["actual_returns"] = df["actual_returns"]
+    classifier_df["trading_algorithm_returns"] = classifier_df["actual_returns"] * classifier_df["predicted_signal"]
+    
+    # Calculate the trading fees and adjust the returns
+    trading_fee_mask = classifier_df["predicted_signal"].diff() != 0
+    classifier_df.loc[trading_fee_mask, "trading_algorithm_returns"] -= (trading_fee * classifier_df["actual_returns"])
+    
+    # Sort the DataFrame by index
+    classifier_df = classifier_df.sort_index()
+    return classifier_df
 
 
 def ROC(classifier,X_train,X_test,y_train,y_test) : 
 
     # set the increment step
-    inc = .05
+    inc = .2
     
     # get the predicted probabilities of the positive class
     y_score_train = classifier.predict_proba(X_train)[:,1]
@@ -142,3 +156,6 @@ def ROC(classifier,X_train,X_test,y_train,y_test) :
     print(f'Test recall: {recall:.2f}')
     print(f'Test F1 score: {f1:.2f}')
     print(f'Test AUC score: {roc_auc_test:.2f}')
+    
+
+
