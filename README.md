@@ -1,2 +1,2 @@
-# ALGOTRADING_Rearch
+# ALGOTRADING_Research
 Some tests with AlgoTrading
