@@ -60,8 +60,11 @@ def Backtesting(df, X_test, X_test_scaled, classifier,trading_fee) :
     # Create a new empty predictions DataFrame using code provided below. 
     classifier_df = pd.DataFrame(index=X_test.index)
     classifier_df["predicted_signal"] = classifier.predict(X_test_scaled)
-    classifier_df["actual_returns"] = df["actual_returns"]
+    classifier_df["actual_returns"] = df["close"].pct_change()
     classifier_df["trading_algorithm_returns"] = classifier_df["actual_returns"] * classifier_df["predicted_signal"]
+    
+    # Drop all NaN values from the DataFrame
+    classifier_df = classifier_df.dropna()
     
     # Calculate the trading fees and adjust the returns
     trading_fee_mask = classifier_df["predicted_signal"].diff() != 0
