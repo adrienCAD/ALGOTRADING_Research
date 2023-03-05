@@ -145,10 +145,10 @@ def ROC(classifier,X_train,X_test,y_train,y_test) :
     print("\nTESTING classification report: \n",testing_report)
     
     # Calculate the accuracy, precision, F1 and recall of the model
-    f1 = f1_score(y_test, y_test_pred, average='micro')
+    f1 = f1_score(y_test, y_test_pred, average='micro', zero_division=1)
     accuracy= accuracy_score(y_test, y_test_pred)
-    precision = precision_score(y_test, y_test_pred)
-    recall = recall_score(y_test, y_test_pred)
+    precision = precision_score(y_test, y_test_pred, zero_division=1)
+    recall = recall_score(y_test, y_test_pred, zero_division=1)
     
     # Print the results
     print(f'Test accuracy: {accuracy:.2f}')
