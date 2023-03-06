@@ -56,19 +56,23 @@ def model_selection(X,Y):
     results_df = pd.DataFrame(results, columns=['Model Name', 'F1_Mean', 'F1_Standard Deviation'])
     return results_df
 
-def Backtesting(df, X_test, X_test_scaled, classifier,trading_fee) :
+def Backtesting (df, X_test, X_test_scaled, classifier, trading_fee):
     # Create a new empty predictions DataFrame using code provided below. 
     classifier_df = pd.DataFrame(index=X_test.index)
     classifier_df["predicted_signal"] = classifier.predict(X_test_scaled)
     classifier_df["actual_returns"] = df["close"].pct_change()
+    
+    # Calculate the algo-trading returns without fee
     classifier_df["trading_algorithm_returns"] = classifier_df["actual_returns"] * classifier_df["predicted_signal"]
     
     # Drop all NaN values from the DataFrame
     classifier_df = classifier_df.dropna()
     
-    # Calculate the trading fees and adjust the returns
+    # Create a mask to define the rows where to apply the transaction fee
     trading_fee_mask = classifier_df["predicted_signal"].diff() != 0
-    classifier_df.loc[trading_fee_mask, "trading_algorithm_returns"] -= (trading_fee * classifier_df["actual_returns"])
+    
+    # Apply the fee to the previous row's actual return with shift(1)
+    classifier_df.loc[trading_fee_mask, "trading_algorithm_returns"] -= trading_fee * classifier_df["actual_returns"].shift(1)
     
     # Sort the DataFrame by index
     classifier_df = classifier_df.sort_index()
@@ -148,10 +152,10 @@ def ROC(classifier,X_train,X_test,y_train,y_test) :
     print("\nTESTING classification report: \n",testing_report)
     
     # Calculate the accuracy, precision, F1 and recall of the model
-    f1 = f1_score(y_test, y_test_pred, average='micro', zero_division=1)
+    f1 = f1_score(y_test, y_test_pred, average='micro')
     accuracy= accuracy_score(y_test, y_test_pred)
-    precision = precision_score(y_test, y_test_pred, zero_division=1)
-    recall = recall_score(y_test, y_test_pred, zero_division=1)
+    precision = precision_score(y_test, y_test_pred, average='micro')
+    recall = recall_score(y_test, y_test_pred, average='micro')
     
     # Print the results
     print(f'Test accuracy: {accuracy:.2f}')
