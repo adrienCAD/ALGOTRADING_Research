@@ -1,0 +1,2 @@
+#!/bin/sh
+/Users/adriencaudron/miniforge3/envs/dev310/bin/python /Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/alpaca_script.py neonphotography

@@ -3,6 +3,7 @@ import alpaca_trade_api as tradeapi
 from finta import TA
 import pickle
 import os
+import sys
 import time
 from dotenv import load_dotenv
 import pandas as pd
@@ -26,6 +27,13 @@ feats = ['HMA_5', 'RSI_5', 'ATR_14', 'RSI_14', 'RSI_150', 'cci']
 
 # Initialize Alpaca API
 alpaca_api = tradeapi.REST(alpaca_api_key, alpaca_secret_key, 'https://paper-api.alpaca.markets')
+
+# Check if the API is running
+try:
+    account_info = alpaca_api.get_account()
+    print(f"Alpaca REST API is running! Status is {account_info.status} for account #{account_info.account_number} ")
+except Exception as e:
+    print("Error getting account info:", e)
 
 while True:
     # Get latest data on 1HR timeframe
@@ -61,29 +69,46 @@ while True:
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    if BUY:
-        side = 'buy'
-        limit_price += 0.0001
-    else:
-        side = 'sell'
-        qty = float(alpaca_api.get_position(symbol).qty)  # quantity of ETH to sell (same as the current position)
-        limit_price -= 0.0001
+    # check if BUY value changed from previous time
+    if 'previous_buy' not in locals():
+        previous_buy = BUY
 
-    # Place order
-    try:
-        order = alpaca_api.submit_order(
-            symbol=symbol,
-            qty=qty,
-            side=side,
-            type=order_type,
-            time_in_force=time_in_force,
-            limit_price=limit_price
-        )
-        print(f"{side.capitalize()} order for {qty} {symbol} at {limit_price} submitted successfully.")
+    if BUY != previous_buy:
+        if BUY:
+            side = 'buy'
+            limit_price += 0.0001
+        else:
+            side = 'sell'
+            qty = float(alpaca_api.get_position(symbol).qty)  # quantity of ETH to sell (same as the current position)
+            limit_price -= 0.0001
 
-    except Exception as e:
-        print(f"Error submitting {side.capitalize()} order: ", e)
+        # Place order
+        try:
+            order = alpaca_api.submit_order(
+                symbol=symbol,
+                qty=qty,
+                side=side,
+                type=order_type,
+                time_in_force=time_in_force,
+                limit_price=limit_price
+            )
+            print(f"{side.capitalize()} order for {qty} {symbol} at {limit_price} submitted successfully.")
+
+        except Exception as e:
+            print(f"Error submitting {side.capitalize()} order: ", e)
+
+        # Update previous_buy value
+        previous_buy = BUY
+    else :
+        print('.', end='')
+
+    # Redirect output to log file
+    with open('alpaca_script.log', 'a') as f:
+        sys.stdout = f
+        sys.stderr = f
 
     # Wait 1 hour then check again
     time.sleep(3600)
+
+
 
