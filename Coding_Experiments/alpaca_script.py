@@ -17,7 +17,7 @@ alpaca_secret_key = os.getenv('ALPACA_SECRET_KEY')
 
 # Import saved XGB model
 papertrading_model = xgb.XGBClassifier()
-papertrading_model.load_model('xgb_clf.bst')
+papertrading_model.load_model('gbt_clf.bst')
 
 # Load scaler model
 scaler = pickle.load(open('scaler_model.pkl', 'rb'))
