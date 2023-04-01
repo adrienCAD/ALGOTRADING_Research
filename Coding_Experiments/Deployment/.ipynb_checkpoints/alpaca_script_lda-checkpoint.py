@@ -55,8 +55,6 @@ while True:
     data_trade['EMA_100'] = TA.EMA(data_trade, 100)
     data_trade['HMA_50'] = TA.HMA(data_trade, 50)
 
-
-
     # Transform preprocessed data to numpy array
     data_to_predict = scaler.transform(data_trade[feats].dropna())
 
@@ -113,13 +111,11 @@ while True:
     else :
         print('.', end='')
 
-    # Redirect output to log file
-    with open('alpaca_script.log', 'a') as f:
-        sys.stdout = f
-        sys.stderr = f
 
     # Wait 1 hour then check again
     time.sleep(3600)
 
-
-
+# Redirect output to log file
+with open('alpaca_script.log', 'a') as f:
+    sys.stdout = f
+    sys.stderr = f
