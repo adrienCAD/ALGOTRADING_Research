@@ -43,3 +43,11 @@ Traceback (most recent call last):
 ValueError: The feature names should match those that were passed during fit.
 Feature names must be in the same order as they were in fit.
 
+Traceback (most recent call last):
+  File "/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 21, in <module>
+    papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+Traceback (most recent call last):
+  File "/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 21, in <module>
+    papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
