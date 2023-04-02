@@ -1,4 +1,3 @@
-#import xgboost as xgb
 import alpaca_trade_api as tradeapi
 from finta import TA
 import pickle
@@ -91,9 +90,9 @@ def execute_trade():
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    # check if BUY value changed from previous time
-    if 'previous_buy' not in locals():
-        previous_buy = BUY
+    # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
+    if previous_buy is None:
+        previous_buy = 1 #BUY using 1 for testing
 
     print("Algo is predicting BUY" if BUY else "Algo is predicting SELL")
     
@@ -111,7 +110,7 @@ def execute_trade():
                     time_in_force=time_in_force,
                     limit_price=limit_price
                 )
-                print(f"{side.capitalize()} order for {qty} {symbol} at {limit_price} submitted successfully.")
+                print(f"{side.capitalize()} order for {qty:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
             except Exception as e:
                 print(f"Error submitting {side.capitalize()} order: ", e)
 
@@ -131,7 +130,7 @@ def execute_trade():
                         time_in_force=time_in_force,
                         limit_price=limit_price
                     )
-                    print(f"{side.capitalize()} order for {qty_to_sell} {symbol} at {limit_price} submitted successfully.")
+                    print(f"{side.capitalize()} order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                 except Exception as e:
                     print(f"Error submitting {side.capitalize()} order: ", e)
 
@@ -142,4 +141,3 @@ def execute_trade():
 
 if __name__ == "__main__":
     execute_trade()
-
