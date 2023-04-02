@@ -92,7 +92,7 @@ def execute_trade():
 
     # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
     if previous_buy is None:
-        previous_buy = 1 #BUY using 1 for testing
+        previous_buy = 0 #BUY using 1 for testing
 
     print("Prediction: BUY" if BUY else "Prediction: SELL")
     

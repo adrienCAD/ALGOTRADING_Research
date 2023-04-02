@@ -51,3 +51,31 @@ Traceback (most recent call last):
   File "/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 21, in <module>
     papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
 TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 55
+    print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
+                                    ^
+SyntaxError: f-string: unmatched '('
