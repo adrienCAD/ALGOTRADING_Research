@@ -45,6 +45,52 @@ except Exception as e:
 # Initialize previous_buy variable to store the previous BUY state
 previous_buy = None
 
+def wait_for_order_execution(order, timeout=180, check_interval=10):
+    start_time = time.time()
+    side = order.side
+    
+    while True:
+        current_time = time.time()
+        if current_time - start_time >= timeout:
+            print(f"{current_time} - Order execution timed out. Resubmitting the order with an updated price.")
+
+            # Cancel the previous order
+            alpaca_api.cancel_order(order.id)
+
+            # Update the limit price
+            eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
+            if side == 'buy':
+                new_limit_price = eth_usd_price + 0.0001
+            else:  # 'sell'
+                new_limit_price = eth_usd_price - 0.0001
+
+            # Resubmit the order with the new price
+            try:
+                new_order = alpaca_api.submit_order(
+                    symbol=order.symbol,
+                    qty=order.qty,
+                    side=side,
+                    type=order.type,
+                    time_in_force=order.time_in_force,
+                    limit_price=new_limit_price
+                )
+                print(f"{current_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
+                order = new_order
+                start_time = current_time
+            except Exception as e:
+                print(f"{current_time} - Error resubmitting {side.capitalize()} order: ", e)
+
+        order_status = alpaca_api.get_order(order.id).status
+        if order_status == 'filled':
+            print(f"{current_time} - Order executed successfully.")
+            break
+        elif order_status in ('canceled', 'rejected'):
+            print(f"{current_time} - Order {order_status}.")
+            break
+
+        time.sleep(check_interval)
+
+
 def execute_trade():
     # Declare 'previous_buy' as a global variable to update it within the function
     global previous_buy
@@ -94,7 +140,7 @@ def execute_trade():
     if previous_buy is None:
         previous_buy = 1 #BUY using 1 for testing
 
-    print("Algo is predicting BUY" if BUY else "Algo is predicting SELL")
+    print("Prediction: BUY" if BUY else "Prediction: SELL")
     
     if BUY != previous_buy:
         if BUY:
@@ -111,6 +157,7 @@ def execute_trade():
                     limit_price=limit_price
                 )
                 print(f"{side.capitalize()} order for {qty:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                wait_for_order_execution(order)
             except Exception as e:
                 print(f"Error submitting {side.capitalize()} order: ", e)
 
@@ -131,13 +178,12 @@ def execute_trade():
                         limit_price=limit_price
                     )
                     print(f"{side.capitalize()} order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                    wait_for_order_execution(order)
                 except Exception as e:
                     print(f"Error submitting {side.capitalize()} order: ", e)
 
         # Update previous_buy value
         previous_buy = BUY
-    else:
-        print('.', end='')
 
 if __name__ == "__main__":
     execute_trade()

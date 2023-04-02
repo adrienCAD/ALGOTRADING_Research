@@ -1,4 +1,45 @@
 Traceback (most recent call last):
-  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 20, in <module>
-    papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
-FileNotFoundError: [Errno 2] No such file or directory: '/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/lda_classifier.pkl'
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 143, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 71, in execute_trade
+    data_to_predict = scaler.transform(data_trade[feats].dropna())
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 140, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/preprocessing/_data.py", line 992, in transform
+    X = self._validate_data(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/base.py", line 548, in _validate_data
+    self._check_feature_names(X, reset=reset)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/base.py", line 481, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- ATR_100
+- ATR_200
+- BB_MED
+- EMA_100
+- RSI_20
+- ...
+Feature names seen at fit time, yet now missing:
+- HMA_14
+- HMA_20
+- HMA_5
+- RSI_150
+- VAMA_20
+- ...
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 189, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 117, in execute_trade
+    data_to_predict = scaler.transform(data_trade[feats].dropna())
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/utils/_set_output.py", line 140, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/preprocessing/_data.py", line 992, in transform
+    X = self._validate_data(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/base.py", line 548, in _validate_data
+    self._check_feature_names(X, reset=reset)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/sklearn/base.py", line 481, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names must be in the same order as they were in fit.
+
