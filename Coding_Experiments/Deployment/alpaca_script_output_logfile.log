@@ -42,3 +42,22 @@ Prediction: SELL
 Sell order for 0.0358 ETHUSD at 1822.3060 submitted successfully.
 2023-04-02 06:29:57 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
 2023-04-02 07:30:05 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+2023-04-02 08:30:10 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: BUY
+2023-04-02 08:37:25 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+Error submitting Sell order:  insufficient balance for ETH (requested: 0.023867882, available: 0.010627702)
+2023-04-02 08:38:13 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+Error submitting Sell order:  insufficient balance for ETH (requested: 0.023867882, available: 0.010627702)
+2023-04-02 08:39:58 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+2023-04-02 08:41:47 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+2023-04-02 08:43:36 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+Error submitting Sell order:  insufficient balance for ETH (requested: 0.023867882, available: 0.010627702)
+2023-04-02 08:44:38 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+Sell order for 0.0239 ETHUSD at 1817.4979 submitted successfully.
+1680443120.255878 - Order executed successfully.

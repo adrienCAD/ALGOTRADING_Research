@@ -52,7 +52,7 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
     while True:
         current_time = time.time()
         if current_time - start_time >= timeout:
-            print(f"{current_time} - Order execution timed out. Resubmitting the order with an updated price.")
+            print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
 
             # Cancel the previous order
             alpaca_api.cancel_order(order.id)
@@ -74,18 +74,18 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
                     time_in_force=order.time_in_force,
                     limit_price=new_limit_price
                 )
-                print(f"{current_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
+                print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
                 order = new_order
                 start_time = current_time
             except Exception as e:
-                print(f"{current_time} - Error resubmitting {side.capitalize()} order: ", e)
+                print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Error resubmitting {side.capitalize()} order: ", e)
 
         order_status = alpaca_api.get_order(order.id).status
         if order_status == 'filled':
-            print(f"{current_time} - Order executed successfully.")
+            print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order executed successfully.")
             break
         elif order_status in ('canceled', 'rejected'):
-            print(f"{current_time} - Order {order_status}.")
+            print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order {order_status}.")
             break
 
         time.sleep(check_interval)
@@ -138,7 +138,7 @@ def execute_trade():
 
     # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
     if previous_buy is None:
-        previous_buy = 1 #BUY using 1 for testing
+        previous_buy = 1 #BUY normally - I use 1 or 0 for testing for now
 
     print("Prediction: BUY" if BUY else "Prediction: SELL")
     
