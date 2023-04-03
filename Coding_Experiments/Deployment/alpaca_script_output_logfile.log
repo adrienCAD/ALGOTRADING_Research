@@ -122,3 +122,83 @@ Sell order for 0.9075 ETHUSD at 1794.7499 submitted successfully.
 2023-04-02 20:30:34 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
 Prediction: SELL
 All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 21:30:40 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 22:30:45 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 23:30:49 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 00:30:54 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 01:30:59 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 02:31:03 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 03:31:08 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 04:31:12 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 05:31:17 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 06:31:21 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 07:00:10 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-03 07:37:04 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 07:39:43 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Sell order for 0.6050 ETHUSD at 1804.1599 submitted successfully.
+2023-04-03 07:39:43 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 07:39:43 - Sell order for 0.604969956 ETH/USD at 1803.0199 submitted successfully.
+2023-04-03 07:39:43 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 07:39:43 - Sell order for 0.604969956 ETH/USD at 1802.8199 submitted successfully.
+2023-04-03 07:39:43 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 07:39:43 - Sell order for 0.604969956 ETH/USD at 1798.8149 submitted successfully.
+2023-04-03 07:39:43 - Order executed successfully.
+2023-04-03 08:49:59 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-03 09:06:07 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-03 09:11:09 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Sell order for 0.4033 ETHUSD at 1808.5762 submitted successfully.
+2023-04-03 09:11:09 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 09:11:09 - Sell order for 0.403313304 ETH/USD at 1809.089596 submitted successfully.
+2023-04-03 09:11:09 - Order executed successfully.
+2023-04-03 10:17:08 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: BUY
+Buy order for 50.1342 ETHUSD at 1795.1691 submitted successfully.
+2023-04-03 10:17:08 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 10:17:08 - Buy order for 50.134186034 ETH/USD at 1797.016827 submitted successfully.
+2023-04-03 10:17:08 - Order executed successfully.
+2023-04-03 11:20:37 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Sell order for 18.2876 ETHUSD at 1802.3719 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1799.950053 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1800.8699 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1799.4402 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1797.1999 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1797.4089000000001 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1799.57228 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1798.9259 submitted successfully.
+2023-04-03 11:20:37 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-03 11:20:37 - Sell order for 18.287631551 ETH/USD at 1796.3999000000001 submitted successfully.
+2023-04-03 11:20:37 - Order executed successfully.
+2023-04-03 12:46:49 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Waiting for next BUY opportunity
+2023-04-03 13:46:55 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Waiting for next BUY opportunity
+2023-04-03 14:47:01 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Waiting for next BUY opportunity
+2023-04-03 15:47:07 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Waiting for next BUY opportunity
+2023-04-03 16:47:53 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Waiting for next BUY opportunity
+2023-04-03 17:47:59 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Waiting for next BUY opportunity
+2023-04-03 18:14:14 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL - Waiting for next BUY opportunity

@@ -94,7 +94,7 @@ def execute_trade():
     if previous_buy is None:
         previous_buy = 0 #BUY using 1 for testing
 
-    print("Prediction: BUY" if BUY else "Prediction: SELL")
+    print("Prediction: BUY - " if BUY else "Prediction: SELL - ", end='')
     
     if BUY != previous_buy:
         if BUY:

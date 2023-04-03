@@ -70,19 +70,20 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
 
         time.sleep(check_interval)
 
+
 def read_write_previous_buy(file_name, value=None):
     if value is None:
         # Read the previous_buy value from the file
         try:
             with open(file_name, 'r') as file:
-                previous_buy = int(file.read().strip())
+                previous_buy = int(float(file.read().strip())) # Convert to float first, then to int
         except FileNotFoundError:
             previous_buy = None
     else:
         # Write the new value of previous_buy to the file
         with open(file_name, 'w') as file:
             file.write(str(value))
-        previous_buy = value
+        previous_buy = int(value)
 
     return previous_buy
 
@@ -123,7 +124,7 @@ def execute_trade():
 
     # Calculate the quantity of BTC to buy or sell
     usd_balance = float(alpaca_api.get_account().cash)
-    quantity_to_trade = usd_balance / eth_usd_price *.9 #using 90% of the avail. balance.
+    quantity_to_trade = usd_balance / eth_usd_price *.95 #using 95% of the avail. balance.
 
     # Define order parameters
     symbol = 'ETHUSD'
@@ -132,14 +133,14 @@ def execute_trade():
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
-   # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
-    if previous_buy is None:
-        previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use 1 or 0 for testing purposes and "forcing" the switch
-
-    print("Prediction: BUY" if BUY else "Prediction: SELL")
+    print("Prediction: BUY - " if BUY else "Prediction: SELL - ", end='')
     
-    if BUY != previous_buy:
+    if (BUY != previous_buy) or (previous_buy is None) :
+
+        # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
+        if previous_buy is None:
+            previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use the value 1 or 0 for testing purposes and "forcing" the switch
+
         if BUY:
             side = 'buy'
             limit_price += 0.0001
@@ -183,7 +184,7 @@ def execute_trade():
         previous_buy = read_write_previous_buy(previous_buy_file, BUY)
 
     else :
-        print("Holding ETH positions" if BUY else "All ETH positions sold - Waiting for next BUY opportunity")
+        print("Waiting for next SELL opportunity" if BUY else "Waiting for next BUY opportunity")
 
 ####################### MAIN #######################
 
