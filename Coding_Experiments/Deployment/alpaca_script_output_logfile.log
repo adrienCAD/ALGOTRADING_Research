@@ -81,3 +81,44 @@ Error submitting Buy order:  name 'qty' is not defined
 Prediction: BUY
 Buy order for 0.5075 ETHUSD at 1796.2001 submitted successfully.
 1680449458.918072 - Order executed successfully.
+2023-04-02 11:31:03 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: BUY
+Buy order for 0.0510 ETHUSD at 1797.6413 submitted successfully.
+1680453065.357874 - Order executed successfully.
+2023-04-02 12:31:10 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+2023-04-02 12:39:29 - Alpaca REST API ACTIVE - account #PA33SNGXN8PD
+Prediction: SELL
+Error submitting Sell order:  insufficient balance for ETH (requested: 6.253532835, available: 2.722364801)
+2023-04-02 13:39:35 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 14:39:41 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 15:39:47 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 16:39:53 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 17:39:58 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 18:40:05 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity
+2023-04-02 19:31:15 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+Sell order for 0.9075 ETHUSD at 1794.7499 submitted successfully.
+2023-04-02 19:31:15 - Order execution timed out. Resubmitting the order with an updated price.
+1680482059.804078 - Sell order for 0.907454933 ETH/USD at 1792.52236 submitted successfully.
+2023-04-02 19:31:15 - Order executed successfully.
+2023-04-02 20:17:54 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 20:19:06 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 20:20:50 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 20:25:18 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 20:26:05 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+2023-04-02 20:30:34 - Alpaca REST API ACTIVE - PAPER-TRADING account #PA33SNGXN8PD
+Prediction: SELL
+All ETH positions sold - Waiting for next BUY opportunity

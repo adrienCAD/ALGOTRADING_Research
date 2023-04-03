@@ -79,3 +79,41 @@ SyntaxError: f-string: unmatched '('
     print(f"{current_time.strftime("%Y-%m-%d %H:%M:%S")} - Order execution timed out. Resubmitting the order with an updated price.")
                                     ^
 SyntaxError: f-string: unmatched '('
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 215, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 139, in execute_trade
+    previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use 1 or 0 for testing purposes and "forcing" the switch
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 84, in read_write_previous_buy
+    with open(file_name, 'w') as file:
+OSError: [Errno 30] Read-only file system: 'previous_buy.txt'
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 215, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 139, in execute_trade
+    previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use 1 or 0 for testing purposes and "forcing" the switch
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 84, in read_write_previous_buy
+    with open(file_name, 'w') as file:
+OSError: [Errno 30] Read-only file system: 'previous_buy.txt'
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 215, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 139, in execute_trade
+    previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use 1 or 0 for testing purposes and "forcing" the switch
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 84, in read_write_previous_buy
+    with open(file_name, 'w') as file:
+OSError: [Errno 30] Read-only file system: 'previous_buy.txt'
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 212, in <module>
+    os.makedirs(data_directory, exist_ok=True)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/os.py", line 225, in makedirs
+    mkdir(name, mode)
+OSError: [Errno 30] Read-only file system: 'data'
+
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py", line 212, in <module>
+    os.makedirs(data_directory, exist_ok=True)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/os.py", line 225, in makedirs
+    mkdir(name, mode)
+OSError: [Errno 30] Read-only file system: 'data'
