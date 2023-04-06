@@ -133,7 +133,7 @@ def execute_trade():
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    print("Prediction: BUY - " if BUY else "Prediction: SELL - ", end='')
+    print("Prediction = BUY | " if BUY else "Prediction = SELL | ", end='')
     
     if (BUY != previous_buy) or (previous_buy is None) :
 
@@ -161,8 +161,10 @@ def execute_trade():
                     )
                     print(f"Buy order for {qty_to_buy:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                     wait_for_order_execution(order)
+                    previous_buy = BUY
                 except Exception as e:
                     print(f"Error submitting Buy order: ", e)
+            read_write_previous_buy(previous_buy_file, BUY)
 
 
         # Sell logic
@@ -184,11 +186,20 @@ def execute_trade():
                     )
                     print(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                     wait_for_order_execution(order)
+                    previous_buy = BUY
                 except Exception as e:
                     print(f"Error submitting Sell order: ", e)
+            read_write_previous_buy(previous_buy_file, BUY)
 
     else :
-        print("Waiting for next SELL opportunity" if BUY else "Waiting for next BUY opportunity")
+        # obtaining portfolio content and value
+        available_usd_cash = float(alpaca_api.get_account().cash)
+        eth_qty = float(alpaca_api.get_position(symbol).qty)
+        portfolio_value = available_usd_cash + eth_qty*eth_usd_price
+
+        # displaying portfolio content, value and current status
+        print (f"{symbol} = {eth_usd_price:.4f} | ETH owned = {eth_qty:.4f} | Portfolio Value = {portfolio_value:.4f} USD | ", end='')
+        print("HODLing ETH." if BUY else "Waiting for right time to buy.")
 
 ####################### MAIN #######################
 
@@ -206,7 +217,7 @@ current_time = displayed_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Check if the API is running
 try:
     account_info = alpaca_api.get_account()
-    print(f"{displayed_time} - Alpaca REST API {account_info.status} - PAPER-TRADING account #{account_info.account_number}")
+    print(f"{displayed_time} | #{account_info.account_number} | ", end='')
     
 except Exception as e:
     print(f"{displayed_time} - Error getting account info: {e}")

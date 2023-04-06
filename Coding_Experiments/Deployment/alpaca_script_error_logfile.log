@@ -1,0 +1,8 @@
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd3.py", line 185
+    print(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully."
+         ^
+SyntaxError: '(' was never closed
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd3.py", line 220
+    if previous_buy = None : 
+       ^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
