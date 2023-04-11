@@ -32,7 +32,8 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
     while True:
         current_time = time.time()
         if current_time - start_time >= timeout:
-            print(f"{displayed_time} - Order execution timed out. Resubmitting the order with an updated price.")
+            # printing the timeout message, using the flush option to avoid buffering and displaying the message immediately on the console output
+            print(f"{displayed_time} - Order execution timed out. Resubmitting the order with an updated price.", flush=True)
 
             # Cancel the previous order
             alpaca_api.cancel_order(order.id)
@@ -54,18 +55,18 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
                     time_in_force=order.time_in_force,
                     limit_price=new_limit_price
                 )
-                print(f"{displayed_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
+                print(f"{displayed_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.", flush=True)
                 order = new_order
                 start_time = current_time
             except Exception as e:
-                print(f"{displayed_time} - Error resubmitting {side.capitalize()} order: ", e)
+                print(f"{displayed_time} - Error resubmitting {side.capitalize()} order: ", e, flush=True)
 
         order_status = alpaca_api.get_order(order.id).status
         if order_status == 'filled':
-            print(f"{displayed_time} - Order executed successfully.")
+            print(f"{displayed_time} - Order executed successfully.", flush=True)
             break
         elif order_status in ('canceled', 'rejected'):
-            print(f"{displayed_time} - Order {order_status}.")
+            print(f"{displayed_time} - Order {order_status}.", flush=True)
             break
 
         time.sleep(check_interval)
@@ -133,7 +134,7 @@ def execute_trade():
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    print("Prediction: BUY - " if BUY else "Prediction: SELL - ", end='')
+    print("Prediction = BUY | " if BUY else "Prediction = SELL | ", end='')
     
     if (BUY != previous_buy) or (previous_buy is None) :
 
@@ -141,50 +142,67 @@ def execute_trade():
         if previous_buy is None:
             previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use the value 1 or 0 for testing purposes and "forcing" the switch
 
+        # Buy logic
         if BUY:
-            side = 'buy'
-            limit_price += 0.0001
-            # Place a buy order for all available USD capital
-            try:
-                order = alpaca_api.submit_order(
-                    symbol=symbol,
-                    qty=qty,
-                    side=side,
-                    type=order_type,
-                    time_in_force=time_in_force,
-                    limit_price=limit_price
-                )
-                print(f"{side.capitalize()} order for {qty:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
-                wait_for_order_execution(order)
-            except Exception as e:
-                print(f"Error submitting {side.capitalize()} order: ", e)
+            available_usd_cash = float(alpaca_api.get_account().cash)
 
+            if available_usd_cash > 50:
+                amount_to_buy = available_usd_cash * .99 * (1 - 0.01) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
+                qty_to_buy = amount_to_buy / eth_usd_price
+                limit_price = eth_usd_price + 0.0001
+
+                try:
+                    order = alpaca_api.submit_order(
+                        symbol=symbol,
+                        qty=qty_to_buy,
+                        side='buy',
+                        type=order_type,
+                        time_in_force=time_in_force,
+                        limit_price=limit_price
+                    )
+                    print(f"Buy order for {qty_to_buy:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                    wait_for_order_execution(order)
+                    previous_buy = BUY
+                except Exception as e:
+                    print(f"Error submitting Buy order: ", e)
+
+            read_write_previous_buy(previous_buy_file, BUY)
+
+
+        # Sell logic
         else:
-            side = 'sell'
             eth_qty = float(alpaca_api.get_position(symbol).qty)
-            if eth_qty * eth_usd_price >= 10:
-                qty_to_sell = eth_qty / 3
-                limit_price -= 0.0001
+
+            if eth_qty * eth_usd_price > 50:
+                qty_to_sell = eth_qty / 3 * (1 - 0.0025) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
+                limit_price = eth_usd_price - 0.0001
 
                 try:
                     order = alpaca_api.submit_order(
                         symbol=symbol,
                         qty=qty_to_sell,
-                        side=side,
+                        side='sell',
                         type=order_type,
                         time_in_force=time_in_force,
                         limit_price=limit_price
                     )
-                    print(f"{side.capitalize()} order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                    print(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                     wait_for_order_execution(order)
+                    previous_buy = BUY
                 except Exception as e:
-                    print(f"Error submitting {side.capitalize()} order: ", e)
+                    print(f"Error submitting Sell order: ", e)
 
-        # Update previous_buy value
-        previous_buy = read_write_previous_buy(previous_buy_file, BUY)
+            read_write_previous_buy(previous_buy_file, BUY)
 
     else :
-        print("Waiting for next SELL opportunity" if BUY else "Waiting for next BUY opportunity")
+        # obtaining portfolio content and value
+        available_usd_cash = float(alpaca_api.get_account().cash)
+        eth_qty = float(alpaca_api.get_position(symbol).qty)
+        portfolio_value = available_usd_cash + eth_qty*eth_usd_price
+
+        # displaying portfolio content, value and current status
+        print (f"{symbol} = {eth_usd_price:.4f} | ETH owned = {eth_qty:.4f} | Portfolio Value = {portfolio_value:.4f} USD | ", end='')
+        print("HODLing ETH." if BUY else "Waiting for right time to buy.")
 
 ####################### MAIN #######################
 
@@ -202,7 +220,7 @@ current_time = displayed_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Check if the API is running
 try:
     account_info = alpaca_api.get_account()
-    print(f"{displayed_time} - Alpaca REST API {account_info.status} - PAPER-TRADING account #{account_info.account_number}")
+    print(f"{displayed_time} | #{account_info.account_number} | ", end='')
     
 except Exception as e:
     print(f"{displayed_time} - Error getting account info: {e}")
@@ -215,6 +233,8 @@ data_directory = os.path.join(script_directory, "data")
 os.makedirs(data_directory, exist_ok=True)
 previous_buy_file = os.path.join(data_directory, 'previous_buy.txt')
 previous_buy = read_write_previous_buy(previous_buy_file)
+
+#previous_buy = 0 ## this is to force the algo to buy or sell
 
 if __name__ == "__main__":
     execute_trade()

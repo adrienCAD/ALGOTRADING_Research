@@ -1,8 +1,194 @@
-  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd3.py", line 185
-    print(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully."
-         ^
-SyntaxError: '(' was never closed
-  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd3.py", line 220
-    if previous_buy = None : 
-       ^^^^^^^^^^^^^^^^^^^
-SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 234, in _one_request
+    resp.raise_for_status()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://paper-api.alpaca.markets/v2/positions/ETHUSD
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd3.py", line 240, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd3.py", line 174, in execute_trade
+    eth_qty = float(alpaca_api.get_position(symbol).qty)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 504, in get_position
+    resp = self.get('/positions/{}'.format(symbol))
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 250, in get
+    return self._request('GET', path, data)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 242, in _one_request
+    raise APIError(error, http_error)
+alpaca_trade_api.rest.APIError: position does not exist
+You don't have permission to run this command via fdautil: /usr/local/Caskroom/miniforge/base/envs/dev310/bin/python /Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd4.py
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd4.py", line 144
+    if BUY #and (BUY != previous_buy):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: expected ':'
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 129
+    if BUY 
+           ^
+SyntaxError: expected ':'
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 210, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 180, in execute_trade
+    do_nothing(alpaca_api, symbol, eth_usd_price)   
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 81, in do_nothing
+    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 73, in <module>
+    def do_nothing(alpaca_api, symbol, eth_usd_price, BUY=BUY):
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 73, in <module>
+    def do_nothing(alpaca_api, symbol, eth_usd_price, BUY=BUY):
+NameError: name 'BUY' is not defined
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 73, in <module>
+    def do_nothing(alpaca_api, symbol, eth_usd_price, BUY=BUY):
+NameError: name 'BUY' is not defined
+
+8:45 p.m
+
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 69
+    print(f"{displayed_time} - Order executed successfully | Portfolio Value = {portfolio_value:.4f} USD", flush=True)
+IndentationError: unexpected indent
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 69
+    print(f"{displayed_time} - Order executed successfully | Portfolio Value = {portfolio_value:.4f} USD", flush=True)
+IndentationError: unexpected indent
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 69
+    print(f"{displayed_time} - Order executed successfully | Portfolio Value = {portfolio_value:.4f} USD", flush=True)
+IndentationError: unexpected indent
+
+4/10/2023 - 2:26 PA3AMQWJBBTI
