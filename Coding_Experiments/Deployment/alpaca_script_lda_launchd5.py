@@ -129,13 +129,13 @@ def execute_trade():
 
     print("Prediction = BUY | " if BUY else "Prediction = SELL | ", end='')
 
-    # Buy logic
+    # Buy logic 
     if BUY : 
         available_usd_cash = float(alpaca_api.get_account().cash)
         eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
 
         if available_usd_cash >= 50:
-            amount_to_buy = available_usd_cash * (1 - 0.0025) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
+            amount_to_buy = available_usd_cash * (1 - 0.03) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
             qty_to_buy = amount_to_buy / eth_usd_price
             limit_price = eth_usd_price + 0.0001
 
@@ -162,11 +162,11 @@ def execute_trade():
 
     # Sell logic
     else : # if BUY !=1, then we sell
-        eth_qty = float(alpaca_api.get_position(symbol).qty)
         eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
-
+        eth_qty = float(alpaca_api.get_position(symbol).qty)
+        
         if eth_qty * eth_usd_price >= 50:
-            qty_to_sell = eth_qty / 3 * (1 - 0.0025) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
+            qty_to_sell = eth_qty / 3 * (1 - 0.01) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
             limit_price = eth_usd_price - 0.0001
 
             try:
@@ -180,7 +180,6 @@ def execute_trade():
                 )
                 print(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                 wait_for_order_execution(alpaca_api, order, symbol)
-
 
             except Exception as e:
                 print(f"Error submitting Sell order: ", e)

@@ -406,3 +406,12 @@ Error submitting Sell order:  local variable 'eth_usd_price' referenced before a
 2023-04-10 23:00:23 - Order executed successfully | Portfolio Value = 9879.5159 USD
 2023-04-11 00:18:19 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0100 ETHUSD at 1923.1658 submitted successfully.
 Error submitting Sell order:  local variable 'eth_usd_price' referenced before assignment
+2023-04-11 01:41:44 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1921.8382 | ETH owned = 0.0200 | Portfolio Value = 9879.5001 USD|Waiting for right time to buy.
+2023-04-11 04:56:21 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1919.2670 | ETH owned = 0.0200 | Portfolio Value = 9939.3491 USD|Waiting for right time to buy.
+2023-04-11 06:40:37 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9876.1203014752854, available: 9649.01)
+2023-04-11 08:43:29 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9876.1203024571179, available: 9649.01)
+2023-04-11 11:06:42 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1915.8840 | ETH owned = 0.0200 | Portfolio Value = 9939.2812 USD|Waiting for right time to buy.
+2023-04-11 18:54:45 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9876.1203086012912928, available: 9649.01)
+2023-04-11 21:06:11 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9801.8637671685652204, available: 9649.01)
+2023-04-11 22:06:35 | #PA3AMQWJBBTI | Prediction = BUY | Buy order for 5.1450 ETHUSD at 1866.6210 submitted successfully.
+Error submitting Buy order:  local variable 'eth_usd_price' referenced before assignment
