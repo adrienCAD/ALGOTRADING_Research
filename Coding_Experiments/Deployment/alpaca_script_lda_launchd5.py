@@ -27,7 +27,8 @@ scaler = pickle.load(open(model_path + 'scaler_model.pkl', 'rb'))
 def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_interval=10):
     start_time = time.time()
     side = order.side
-    
+    eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p  # Add this line
+
     while True:
         current_time = time.time()
         if current_time - start_time >= timeout:
@@ -38,7 +39,7 @@ def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_inter
             alpaca_api.cancel_order(order.id)
 
             # Update the limit price
-            eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
+            eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p  # Update this line
             if side == 'buy':
                 new_limit_price = eth_usd_price + 0.0001
             else:  # 'sell'
@@ -73,6 +74,7 @@ def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_inter
             break
 
         time.sleep(check_interval)
+
 
 def do_nothing(alpaca_api, symbol, eth_usd_price, BUY):
     # obtaining portfolio content and value
@@ -129,10 +131,12 @@ def execute_trade():
 
     print("Prediction = BUY | " if BUY else "Prediction = SELL | ", end='')
 
+    # Get the current price of BTC in USD
+    eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
+
     # Buy logic 
     if BUY : 
         available_usd_cash = float(alpaca_api.get_account().cash)
-        eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
 
         if available_usd_cash >= 50:
             amount_to_buy = available_usd_cash * (1 - 0.03) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
@@ -162,7 +166,6 @@ def execute_trade():
 
     # Sell logic
     else : # if BUY !=1, then we sell
-        eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
         eth_qty = float(alpaca_api.get_position(symbol).qty)
         
         if eth_qty * eth_usd_price >= 50:
