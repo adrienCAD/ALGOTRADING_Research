@@ -8,6 +8,7 @@ import time
 from datetime import datetime
 from dotenv import load_dotenv
 import pandas as pd
+import logging
 
 # Load environment variables
 load_dotenv()
@@ -16,6 +17,18 @@ load_dotenv()
 alpaca_api_key = os.getenv('ALPACA_API_KEY')
 alpaca_secret_key = os.getenv('ALPACA_SECRET_KEY')
 model_path = os.getenv('ALPHAJET_MODEL_PATH')
+class FlushingStreamHandler(logging.StreamHandler):
+    def emit(self, record):
+        super().emit(record)
+        self.flush()
+
+# Configure logging
+log_filename = model_path +'logfile.log'
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout), logging.FileHandler(log_filename)]
+)
 
 # Import saved LDA model
 papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
@@ -24,6 +37,14 @@ papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
 scaler = pickle.load(open(model_path + 'scaler_model.pkl', 'rb'))
 
 ####################### FUNCTIONS ##########################
+
+def print_flush(message):
+    logging.info(message)
+
+#def print_flush(message):
+#    print(message, flush=True)
+#    sys.stdout.flush()
+
 def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_interval=10):
     start_time = time.time()
     side = order.side
@@ -32,8 +53,8 @@ def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_inter
     while True:
         current_time = time.time()
         if current_time - start_time >= timeout:
-            # printing the timeout message, using the flush option to avoid buffering and displaying the message immediately on the console output
-            print(f"{displayed_time} - Order execution timed out. Resubmitting the order with an updated price.", flush=True)
+            # printing the timeout message, using the print_flush function to avoid buffering and displaying the message immediately on the console output
+            print_flush(f"Order execution timed out. Resubmitting the order with an updated price.")
 
             # Cancel the previous order
             alpaca_api.cancel_order(order.id)
@@ -55,11 +76,11 @@ def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_inter
                     time_in_force=order.time_in_force,
                     limit_price=new_limit_price
                 )
-                print(f"{displayed_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.", flush=True)
+                print_flush(f"{side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
                 order = new_order
                 start_time = current_time
             except Exception as e:
-                print(f"{displayed_time} - Error resubmitting {side.capitalize()} order: ", e, flush=True)
+                print_flush(f"{displayed_time} - Error resubmitting {side.capitalize()} order: ", e)
 
         order_status = alpaca_api.get_order(order.id).status
 
@@ -67,10 +88,10 @@ def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_inter
             available_usd_cash = float(alpaca_api.get_account().cash)
             eth_qty = float(alpaca_api.get_position(symbol).qty)
             portfolio_value = available_usd_cash + eth_qty * eth_usd_price
-            print(f"{displayed_time} - Order executed successfully | Portfolio Value = {portfolio_value:.4f} USD", flush=True)
+            print_flush(f"Order executed successfully | Portfolio Value = {portfolio_value:.4f} USD")
             break
         elif order_status in ('canceled', 'rejected'):
-            print(f"{displayed_time} - Order {order_status}.", flush=True)
+            print_flush(f"Order {order_status}.")
             break
 
         time.sleep(check_interval)
@@ -83,8 +104,8 @@ def do_nothing(alpaca_api, symbol, eth_usd_price, BUY):
     portfolio_value = available_usd_cash + eth_qty * eth_usd_price
     
     # displaying portfolio content, value and current status
-    print(f"{symbol} = {eth_usd_price:.4f} | ETH owned = {eth_qty:.4f} | Portfolio Value = {portfolio_value:.4f} USD|", end='')
-    print("HODLing ETH." if BUY else "Waiting for right time to buy.")
+    print_flush(f"{symbol} = {eth_usd_price:.4f} | ETH owned = {eth_qty:.4f} | Portfolio Value = {portfolio_value:.4f} USD|")
+    print_flush("HODLing ETH." if BUY else "Waiting for right time to buy.")
 
 
 def execute_trade():
@@ -129,7 +150,7 @@ def execute_trade():
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    print("Prediction = BUY | " if BUY else "Prediction = SELL | ", end='')
+    print_flush("↑↑ Prediction = BUY ↑↑ " if BUY else "↓↓ Prediction = SELL ↓↓")
 
     # Get the current price of BTC in USD
     eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
@@ -152,13 +173,13 @@ def execute_trade():
                     time_in_force=time_in_force,
                     limit_price=limit_price
                 )
-                print(f"Buy order for {qty_to_buy:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                print_flush(f"Buy order for {qty_to_buy:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                 wait_for_order_execution(alpaca_api, order, symbol)
 
 
 
             except Exception as e:
-                print(f"Error submitting Buy order: ", e)
+                print_flush(f"Error submitting Buy order: ", e)
 
         else: 
             do_nothing(alpaca_api, symbol, eth_usd_price,BUY)       
@@ -181,11 +202,11 @@ def execute_trade():
                     time_in_force=time_in_force,
                     limit_price=limit_price
                 )
-                print(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                print_flush(f"Sell order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
                 wait_for_order_execution(alpaca_api, order, symbol)
 
             except Exception as e:
-                print(f"Error submitting Sell order: ", e)
+                print_flush(f"Error submitting Sell order: ", e)
 
         else: 
             do_nothing(alpaca_api, symbol, eth_usd_price,BUY)   
@@ -206,13 +227,13 @@ alpaca_api = tradeapi.REST(alpaca_api_key, alpaca_secret_key, 'https://paper-api
 # Check the time
 current_time = displayed_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-# Check if the API is running
+# Check if the API is running 
 try:
     account_info = alpaca_api.get_account()
-    print(f"{displayed_time} | #{account_info.account_number} | ", end='')
+    print_flush(f"Alpaca REST API {account_info.status} - PAPER-TRADING account #{account_info.account_number}")
     
 except Exception as e:
-    print(f"{displayed_time} - Error getting account info: {e}")
+    print_flush(f"Error getting account info: {e}")
 
 # Get the alpaca script's directory
 script_directory = os.path.dirname(os.path.realpath(__file__))

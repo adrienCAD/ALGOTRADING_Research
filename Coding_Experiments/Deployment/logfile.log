@@ -1,0 +1,43 @@
+2023-04-14 19:50:57,755 | INFO | 2023-04-14 19:47:53 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-14 19:50:58,184 | INFO | 2023-04-14 19:47:53 - Sell order for 0.028318302 ETH/USD at 2090.5472 submitted successfully.
+2023-04-14 21:29:30,405 | INFO | 2023-04-14 21:27:26 - Order executed successfully | Portfolio Value = 10098.2598 USD
+2023-04-14 22:31:56,684 | INFO | 2023-04-14 22:29:41 - Order executed successfully | Portfolio Value = 10098.4172 USD
+2023-04-15 00:35:28,262 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:35:28,666 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2091.5897999999997 submitted successfully.
+2023-04-15 00:38:32,363 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:38:32,797 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2091.5998999999997 submitted successfully.
+2023-04-15 00:41:36,628 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:41:37,045 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.8026738999997 submitted successfully.
+2023-04-15 00:44:39,640 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:44:40,048 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.9199 submitted successfully.
+2023-04-15 00:47:43,786 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:47:44,324 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.9264 submitted successfully.
+2023-04-15 00:50:47,685 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:50:52,451 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2092.316978 submitted successfully.
+2023-04-15 00:53:56,530 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:54:00,444 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.6612379999997 submitted successfully.
+2023-04-15 00:57:04,838 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:57:08,439 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.36388 submitted successfully.
+2023-04-15 00:57:18,841 | INFO | 2023-04-15 00:32:23 - Order executed successfully | Portfolio Value = 10098.2807 USD
+2023-04-15 06:43:02,036 | INFO | Error getting account info: print_flush() got an unexpected keyword argument 'end'
+2023-04-15 06:43:02,036 | INFO | Error getting account info: print_flush() got an unexpected keyword argument 'end'
+2023-04-15 06:48:02,849 | INFO | #PA3AMQWJBBTI
+2023-04-15 06:48:02,849 | INFO | #PA3AMQWJBBTI
+2023-04-15 06:48:03,939 | INFO | Prediction = SELL | 
+2023-04-15 06:48:03,939 | INFO | Prediction = SELL | 
+2023-04-15 06:48:04,191 | INFO | ETHUSD = 2103.7478 | ETH owned = 0.0153 | Portfolio Value = 10101.5861 USD|
+2023-04-15 06:48:04,191 | INFO | ETHUSD = 2103.7478 | ETH owned = 0.0153 | Portfolio Value = 10101.5861 USD|
+2023-04-15 06:48:04,191 | INFO | Waiting for right time to buy.
+2023-04-15 06:48:04,191 | INFO | Waiting for right time to buy.
+2023-04-15 06:50:38,526 | INFO | #PA3AMQWJBBTI
+2023-04-15 06:50:39,412 | INFO | Prediction = SELL | 
+2023-04-15 06:50:39,698 | INFO | ETHUSD = 2104.0046 | ETH owned = 0.0153 | Portfolio Value = 10101.5901 USD|
+2023-04-15 06:50:39,699 | INFO | Waiting for right time to buy.
+2023-04-15 06:52:29,661 | INFO | Alpaca REST API ACTIVE - PAPER-TRADING account #PA3AMQWJBBTI
+2023-04-15 06:52:30,641 | INFO | Prediction = SELL | 
+2023-04-15 06:52:30,903 | INFO | ETHUSD = 2102.4000 | ETH owned = 0.0153 | Portfolio Value = 10101.5655 USD|
+2023-04-15 06:52:30,904 | INFO | Waiting for right time to buy.
+2023-04-15 07:35:46,702 | INFO | Alpaca REST API ACTIVE - PAPER-TRADING account #PA3AMQWJBBTI
+2023-04-15 07:35:47,715 | INFO | ↓↓ Prediction = SELL ↓↓
+2023-04-15 07:35:47,969 | INFO | ETHUSD = 2109.3800 | ETH owned = 0.0153 | Portfolio Value = 10101.6723 USD|
+2023-04-15 07:35:47,970 | INFO | Waiting for right time to buy.

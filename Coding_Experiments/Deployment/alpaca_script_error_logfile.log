@@ -192,3 +192,627 @@ IndentationError: unexpected indent
 IndentationError: unexpected indent
 
 4/10/2023 - 2:26 PA3AMQWJBBTI
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x158871840>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x158871840>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x158871840>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x156989810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x156989810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x156989810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x154c41810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x154c41810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x154c41810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x1552dd8a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1552dd8a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1552dd8a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x11b33d870>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x11b33d870>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x11b33d870>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x11c72d810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x11c72d810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x11c72d810>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x1572d5870>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1572d5870>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1572d5870>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x1610c5840>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1610c5840>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1610c5840>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x15fef58d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x15fef58d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x15fef58d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 386, in _make_request
+    self._validate_conn(conn)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1042, in _validate_conn
+    conn.connect()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 363, in connect
+    self.sock = conn = self._new_conn()
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x158be98d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 489, in send
+    resp = conn.urlopen(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    retries = retries.increment(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x158be98d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 221, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 92, in execute_trade
+    data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 841, in get_crypto_bars
+    return BarsV2(list(self.get_crypto_bars_iter(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 828, in get_crypto_bars_iter
+    for bar in bars:
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 589, in _data_get
+    resp = self.data_get(path, data=data, feed=feed,
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 270, in data_get
+    return self._request(
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 213, in _request
+    return self._one_request(method, url, opts, retry)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/alpaca_trade_api/rest.py", line 232, in _one_request
+    resp = self._session.request(method, url, **opts)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 587, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/sessions.py", line 701, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/site-packages/requests/adapters.py", line 565, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='data.alpaca.markets', port=443): Max retries exceeded with url: /v1beta3/crypto/us/bars?timeframe=1Hour&start=2023-03-01&symbols=ETH%2FUSDT (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x158be98d0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 18, in <module>
+    handlers=[logging.StreamHandler(sys.stdout), logging.FileHandler(log_filename)]
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/logging/__init__.py", line 1169, in __init__
+    StreamHandler.__init__(self, self._open())
+  File "/usr/local/Caskroom/miniforge/base/envs/dev310/lib/python3.10/logging/__init__.py", line 1201, in _open
+    return open_func(self.baseFilename, self.mode,
+OSError: [Errno 30] Read-only file system: '/logfile.log'
+Traceback (most recent call last):
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 242, in <module>
+    execute_trade()
+  File "/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py", line 153, in execute_trade
+    print_flush("Prediction = BUY | " if BUY else "Prediction = SELL | ", end='')
+TypeError: print_flush() got an unexpected keyword argument 'end'

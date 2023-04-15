@@ -421,3 +421,175 @@ Error submitting Buy order:  local variable 'eth_usd_price' referenced before as
 2023-04-11 22:44:57 | #PA3AMQWJBBTI | Prediction = BUY | Buy order for 0.2076 ETHUSD at 1866.5601 submitted successfully.
 Error submitting Buy order:  local variable 'eth_usd_price' referenced before assignment
 2023-04-11 22:48:20 | #PA3AMQWJBBTI | Prediction = BUY | ETHUSD = 1864.4000 | ETH owned = 5.3069 | Portfolio Value = 9906.2928 USD|HODLing ETH.
+2023-04-11 23:48:24 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 1.2077 ETHUSD at 1866.8754 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1867.09007358 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1868.1739 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1869.4419 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1869.5380213600001 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1870.8799000000001 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1870.3799000000001 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1870.4999 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1869.87934401 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1869.2999 submitted successfully.
+2023-04-11 23:48:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-11 23:48:24 - Sell order for 1.207741154 ETH/USD at 1869.73771 submitted successfully.
+2023-04-11 23:48:24 - Order executed successfully | Portfolio Value = 9918.1778 USD
+2023-04-12 01:21:18 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.5442 ETHUSD at 1865.3800 submitted successfully.
+2023-04-12 01:21:18 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 01:21:18 - Sell order for 0.5441706 ETH/USD at 1866.4799 submitted successfully.
+2023-04-12 01:21:18 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 01:21:18 - Sell order for 0.5441706 ETH/USD at 1866.1888633 submitted successfully.
+2023-04-12 01:21:18 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 01:21:18 - Sell order for 0.5441706 ETH/USD at 1867.25468 submitted successfully.
+2023-04-12 01:21:18 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 01:21:18 - Sell order for 0.5441706 ETH/USD at 1866.4017323 submitted successfully.
+2023-04-12 01:21:18 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 01:21:18 - Sell order for 0.5441706 ETH/USD at 1867.689423 submitted successfully.
+2023-04-12 01:21:18 - Order executed successfully | Portfolio Value = 9913.2701 USD
+2023-04-12 02:39:24 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.3646 ETHUSD at 1875.2174 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1875.44841 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1875.5384349 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1873.9985036 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1873.1399000000001 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1872.5718863 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1872.7057 submitted successfully.
+2023-04-12 02:39:24 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 02:39:24 - Sell order for 0.364594302 ETH/USD at 1872.55922 submitted successfully.
+2023-04-12 02:39:24 - Order executed successfully | Portfolio Value = 9917.7182 USD
+2023-04-12 04:03:15 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.2267 ETHUSD at 1868.5788 submitted successfully.
+2023-04-12 04:03:15 - Order executed successfully | Portfolio Value = 9914.8719 USD
+2023-04-12 05:04:31 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.1519 ETHUSD at 1872.2099 submitted successfully.
+2023-04-12 05:04:31 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 05:04:31 - Sell order for 0.151881752 ETH/USD at 1872.7367530000001 submitted successfully.
+2023-04-12 05:04:31 - Order executed successfully | Portfolio Value = 9915.4356 USD
+2023-04-12 06:09:01 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0516 ETHUSD at 1874.0088 submitted successfully.
+2023-04-12 06:09:01 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 06:09:01 - Sell order for 0.051639796 ETH/USD at 1873.72422 submitted successfully.
+2023-04-12 06:09:01 - Order executed successfully | Portfolio Value = 9915.4701 USD
+2023-04-12 07:14:12 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0346 ETHUSD at 1872.5209 submitted successfully.
+2023-04-12 07:14:12 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 07:14:12 - Sell order for 0.034598663 ETH/USD at 1871.2426436 submitted successfully.
+2023-04-12 07:14:12 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-12 07:14:12 - Sell order for 0.034598663 ETH/USD at 1872.58522262 submitted successfully.
+2023-04-12 07:14:12 - Order executed successfully | Portfolio Value = 9915.2707 USD
+2023-04-12 08:23:06 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0232 ETHUSD at 1893.7919 submitted successfully.
+2023-04-12 08:23:06 - Order executed successfully | Portfolio Value = 9916.7003 USD
+2023-04-12 09:23:22 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0155 ETHUSD at 1908.5320 submitted successfully.
+2023-04-12 09:23:22 - Order executed successfully | Portfolio Value = 9917.3541 USD
+2023-04-12 11:25:24 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0104 ETHUSD at 1917.6038 submitted successfully.
+2023-04-12 11:25:24 - Order executed successfully | Portfolio Value = 9917.6101 USD
+2023-04-13 01:17:02 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1922.2000 | ETH owned = 0.0211 | Portfolio Value = 9917.7072 USD|Waiting for right time to buy.
+2023-04-13 02:17:43 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1917.7900 | ETH owned = 0.0211 | Portfolio Value = 9917.6141 USD|Waiting for right time to buy.
+2023-04-13 03:18:17 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1923.1900 | ETH owned = 0.0211 | Portfolio Value = 9917.7281 USD|Waiting for right time to buy.
+2023-04-13 04:19:02 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1986.3526 | ETH owned = 0.0211 | Portfolio Value = 9933.9163 USD|Waiting for right time to buy.
+2023-04-13 05:19:18 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1981.1626 | ETH owned = 0.0211 | Portfolio Value = 9933.8067 USD|Waiting for right time to buy.
+2023-04-13 06:19:53 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1988.4677 | ETH owned = 0.0211 | Portfolio Value = 9933.9610 USD|Waiting for right time to buy.
+2023-04-13 07:21:01 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1996.5300 | ETH owned = 0.0211 | Portfolio Value = 9934.1313 USD|Waiting for right time to buy.
+2023-04-13 08:21:06 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 2001.2156 | ETH owned = 0.0211 | Portfolio Value = 9934.2303 USD|Waiting for right time to buy.
+2023-04-13 09:21:10 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1999.7572 | ETH owned = 0.0211 | Portfolio Value = 9934.1995 USD|Waiting for right time to buy.
+2023-04-13 10:21:15 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 1996.7253 | ETH owned = 0.0211 | Portfolio Value = 9934.1355 USD|Waiting for right time to buy.
+2023-04-13 11:22:45 | #PA3AMQWJBBTI | Prediction = BUY | Buy order for 4.8070 ETHUSD at 1996.1001 submitted successfully.
+2023-04-13 11:22:45 - Order executed successfully | Portfolio Value = 9919.1311 USD
+2023-04-13 12:23:00 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 1.5900 ETHUSD at 2010.6999 submitted successfully.
+2023-04-13 12:23:00 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 12:23:00 - Sell order for 1.590028108 ETH/USD at 2010.010615 submitted successfully.
+2023-04-13 12:23:00 - Order executed successfully | Portfolio Value = 9982.3164 USD
+2023-04-13 14:48:56 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 1.0653 ETHUSD at 2017.7619 submitted successfully.
+2023-04-13 14:48:56 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 14:48:56 - Sell order for 1.065318832 ETH/USD at 2017.4732716 submitted successfully.
+2023-04-13 14:48:56 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 14:48:56 - Sell order for 1.065318832 ETH/USD at 2013.7399 submitted successfully.
+2023-04-13 14:48:56 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 14:48:56 - Sell order for 1.065318832 ETH/USD at 2013.68946 submitted successfully.
+2023-04-13 14:48:56 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 14:48:56 - Sell order for 1.065318832 ETH/USD at 2012.80536869 submitted successfully.
+2023-04-13 14:48:56 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 14:48:56 - Sell order for 1.065318832 ETH/USD at 2012.8290690000001 submitted successfully.
+2023-04-13 14:48:56 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 14:48:56 - Sell order for 1.065318832 ETH/USD at 2006.7182480000001 submitted successfully.
+2023-04-13 14:48:56 - Order executed successfully | Portfolio Value = 9969.3464 USD
+2023-04-13 16:10:17 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.6974 ETHUSD at 2010.0721 submitted successfully.
+2023-04-13 16:10:17 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-13 16:10:17 - Sell order for 0.697378884 ETH/USD at 2009.403131 submitted successfully.
+2023-04-13 16:10:17 - Order executed successfully | Portfolio Value = 9973.3302 USD
+2023-04-14 01:24:27 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1588714b0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 02:26:29 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x156989480>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 03:28:31 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x154c41480>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 04:30:33 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1552dd510>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 05:32:36 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x11b33d4e0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 06:34:39 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x11c72d480>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 11:20:26 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1572d54e0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 11:22:50 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x1610c54b0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 12:25:02 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x15fef5540>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 13:27:15 - Error getting account info: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x158be9540>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known'))
+2023-04-14 13:54:17 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.4672 ETHUSD at 2084.0284 submitted successfully.
+2023-04-14 13:54:17 - Order executed successfully | Portfolio Value = 10086.2900 USD
+2023-04-14 14:56:45 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.3131 ETHUSD at 2090.1504 submitted successfully.
+2023-04-14 14:56:45 - Order executed successfully | Portfolio Value = 10091.0536 USD
+2023-04-14 15:58:01 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.2097 ETHUSD at 2108.1875 submitted successfully.
+2023-04-14 15:58:01 - Order executed successfully | Portfolio Value = 10101.9778 USD
+2023-04-14 16:58:27 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.1405 ETHUSD at 2106.0312 submitted successfully.
+2023-04-14 16:58:27 - Order executed successfully | Portfolio Value = 10100.6996 USD
+2023-04-14 18:00:04 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0942 ETHUSD at 2107.6968 submitted successfully.
+2023-04-14 18:00:04 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-14 18:00:04 - Sell order for 0.094154874 ETH/USD at 2107.6760499999996 submitted successfully.
+2023-04-14 18:00:04 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-14 18:00:04 - Sell order for 0.094154874 ETH/USD at 2108.9498999999996 submitted successfully.
+2023-04-14 18:00:04 - Order executed successfully | Portfolio Value = 10101.2923 USD
+2023-04-14 19:08:52 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0631 ETHUSD at 2098.8605 submitted successfully.
+2023-04-14 19:08:52 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-14 19:08:52 - Sell order for 0.063083766 ETH/USD at 2099.6169999999997 submitted successfully.
+2023-04-14 19:08:52 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-14 19:08:52 - Sell order for 0.063083766 ETH/USD at 2098.7164404 submitted successfully.
+2023-04-14 19:08:52 - Order executed successfully | Portfolio Value = 10099.1760 USD
+2023-04-14 19:20:30 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0423 ETHUSD at 2101.6435 submitted successfully.
+2023-04-14 19:20:30 - Order executed successfully | Portfolio Value = 10099.4409 USD
+2023-04-14 19:43:53 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9621.5201977327762795084647, available: 7919.09)
+2023-04-14 19:47:53 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0283 ETHUSD at 2092.6164 submitted successfully.
+2023-04-14 19:50:57,755 | INFO | 2023-04-14 19:47:53 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-14 19:50:58,184 | INFO | 2023-04-14 19:47:53 - Sell order for 0.028318302 ETH/USD at 2090.5472 submitted successfully.
+2023-04-14 19:51:46 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9621.5201983149071808151174, available: 7919.09)
+2023-04-14 20:52:01 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9678.8673258874933143226932, available: 7978.21)
+2023-04-14 21:27:26 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0190 ETHUSD at 2088.9999 submitted successfully.
+2023-04-14 21:29:30,405 | INFO | 2023-04-14 21:27:26 - Order executed successfully | Portfolio Value = 10098.2598 USD
+2023-04-14 22:29:41 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0127 ETHUSD at 2094.1261 submitted successfully.
+2023-04-14 22:31:56,684 | INFO | 2023-04-14 22:29:41 - Order executed successfully | Portfolio Value = 10098.4172 USD
+2023-04-14 23:32:10 | #PA3AMQWJBBTI | Prediction = BUY | Error submitting Buy order:  insufficient balance for USD (requested: 9743.0385085291636007899451, available: 8044.36)
+2023-04-15 00:32:23 | #PA3AMQWJBBTI | Prediction = SELL | Sell order for 0.0085 ETHUSD at 2092.3922 submitted successfully.
+2023-04-15 00:35:28,262 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:35:28,666 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2091.5897999999997 submitted successfully.
+2023-04-15 00:38:32,363 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:38:32,797 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2091.5998999999997 submitted successfully.
+2023-04-15 00:41:36,628 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:41:37,045 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.8026738999997 submitted successfully.
+2023-04-15 00:44:39,640 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:44:40,048 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.9199 submitted successfully.
+2023-04-15 00:47:43,786 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:47:44,324 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.9264 submitted successfully.
+2023-04-15 00:50:47,685 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:50:52,451 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2092.316978 submitted successfully.
+2023-04-15 00:53:56,530 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:54:00,444 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.6612379999997 submitted successfully.
+2023-04-15 00:57:04,838 | INFO | 2023-04-15 00:32:23 - Order execution timed out. Resubmitting the order with an updated price.
+2023-04-15 00:57:08,439 | INFO | 2023-04-15 00:32:23 - Sell order for 0.008517098 ETH/USD at 2090.36388 submitted successfully.
+2023-04-15 00:57:18,841 | INFO | 2023-04-15 00:32:23 - Order executed successfully | Portfolio Value = 10098.2807 USD
+2023-04-15 01:57:32 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 2088.6539 | ETH owned = 0.0153 | Portfolio Value = 10098.2546 USD|Waiting for right time to buy.
+2023-04-15 02:57:44 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 2102.3559 | ETH owned = 0.0153 | Portfolio Value = 10098.4641 USD|Waiting for right time to buy.
+2023-04-15 03:57:58 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 2099.7975 | ETH owned = 0.0153 | Portfolio Value = 10101.5257 USD|Waiting for right time to buy.
+2023-04-15 04:58:10 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 2110.2219 | ETH owned = 0.0153 | Portfolio Value = 10101.6851 USD|Waiting for right time to buy.
+2023-04-15 05:58:23 | #PA3AMQWJBBTI | Prediction = SELL | ETHUSD = 2109.0764 | ETH owned = 0.0153 | Portfolio Value = 10101.6676 USD|Waiting for right time to buy.
