@@ -41,11 +41,7 @@ scaler = pickle.load(open(model_path + 'scaler_model.pkl', 'rb'))
 def print_flush(message):
     logging.info(message)
 
-#def print_flush(message):
-#    print(message, flush=True)
-#    sys.stdout.flush()
-
-def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_interval=10):
+def wait_for_order_execution(alpaca_api, order, symbol, timeout=90, check_interval=5):
     start_time = time.time()
     side = order.side
     eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p  # Add this line
@@ -80,7 +76,7 @@ def wait_for_order_execution(alpaca_api, order, symbol, timeout=180, check_inter
                 order = new_order
                 start_time = current_time
             except Exception as e:
-                print_flush(f"{displayed_time} - Error resubmitting {side.capitalize()} order: ", e)
+                print_flush(f"{displayed_time} - Error resubmitting {side.capitalize()} order: {e}")
 
         order_status = alpaca_api.get_order(order.id).status
 
@@ -136,6 +132,9 @@ def execute_trade():
     # Check the trade direction: BUY (=1) or SELL (=0)
     BUY = predictions[-1]
 
+    # Uncomment below for forcing BUY or SELL order (testing purpose only)
+    #BUY = 1
+
     # Get the current price of BTC in USD
     eth_usd_price = alpaca_api.get_latest_crypto_orderbook(['ETH/USD'])['ETH/USD'].asks[0].p
 
@@ -160,8 +159,8 @@ def execute_trade():
         available_usd_cash = float(alpaca_api.get_account().cash)
 
         if available_usd_cash >= 50:
-            amount_to_buy = available_usd_cash * (1 - 0.03) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
-            qty_to_buy = amount_to_buy / eth_usd_price
+            amount_to_buy = available_usd_cash * (1 - 0.04) # Multiply by (1 - fee_percentage) to account for the 0.25% (TAKER) fee
+            qty_to_buy = round(amount_to_buy / eth_usd_price, 4)
             limit_price = eth_usd_price + 0.0001
 
             try:
@@ -179,7 +178,8 @@ def execute_trade():
 
 
             except Exception as e:
-                print_flush(f"Error submitting Buy order: ", e)
+                print_flush(f"Error submitting Buy order: {e}")
+
 
         else: 
             do_nothing(alpaca_api, symbol, eth_usd_price,BUY)       
@@ -206,7 +206,7 @@ def execute_trade():
                 wait_for_order_execution(alpaca_api, order, symbol)
 
             except Exception as e:
-                print_flush(f"Error submitting Sell order: ", e)
+                print_flush(f"Error submitting SELL order: {e}")
 
         else: 
             do_nothing(alpaca_api, symbol, eth_usd_price,BUY)   
