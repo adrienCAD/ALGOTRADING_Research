@@ -8,20 +8,20 @@
 		<true/>
 	</dict>
 	<key>Label</key>
-	<string>com.algo_trading</string>
+	<string>com.alphajet_io.plist</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/local/bin/fdautil</string>
 		<string>exec</string>
 		<string>/usr/local/Caskroom/miniforge/base/envs/dev310/bin/python</string>
-		<string>/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd5.py</string>
+		<string>/Users/adriencaudron/CODE/adrienCAD.github.io/upload_console_output.py</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_error_logfile.log</string>
+	<string>/Users/adriencaudron/CODE/adrienCAD.github.io/upload_console_output_error.log</string>
 	<key>StandardOutPath</key>
-	<string>/Users/adriencaudron/CODE/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_logfile.log</string>
+	<string>/Users/adriencaudron/CODE/adrienCAD.github.io/upload_console_output.log</string>
 	<key>StartInterval</key>
 	<integer>3600</integer>
 </dict>
