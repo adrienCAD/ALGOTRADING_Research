@@ -144,17 +144,17 @@ def ROC(classifier,X_train,X_test,y_train,y_test) :
     plt.show()
     
     # Evaluate the model using a classification report
-    training_report = classification_report(y_train, y_train_pred)
+    training_report = classification_report(y_train, y_train_pred,zero_division=1)
     print("TRAINING classification report: \n",training_report)
     
     # Evaluate the model using a classification report
-    testing_report = classification_report(y_test, y_test_pred)
+    testing_report = classification_report(y_test, y_test_pred,zero_division=1)
     print("\nTESTING classification report: \n",testing_report)
     
     # Calculate the accuracy, precision, F1 and recall of the model
     f1 = f1_score(y_test, y_test_pred, average='micro')
     accuracy= accuracy_score(y_test, y_test_pred)
-    precision = precision_score(y_test, y_test_pred, average='micro')
+    precision = precision_score(y_test, y_test_pred, average='micro',zero_division=1)
     recall = recall_score(y_test, y_test_pred, average='micro')
     
     # Print the results

@@ -2,23 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Label</key>
-    <string>com.algo_trading</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Users/adriencaudron/miniforge3/envs/dev310/bin/python</string>
-        <string>/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_lda_launchd.py</string>
-
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>KeepAlive</key>
-    <false/>
-    <key>StandardOutPath</key>
-    <string>/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_output_logfile.log</string>
-    <key>StandardErrorPath</key>
-    <string>/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/alpaca_script_error_logfile.log</string>
-    <key>StartInterval</key>
-    <integer>3600</integer>
+	<key>KeepAlive</key>
+	<dict>
+		<key>Crashed</key>
+		<true/>
+	</dict>
+	<key>Label</key>
+	<string>com.alphajet_io.plist</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/bin/fdautil</string>
+		<string>exec</string>
+		<string>/usr/local/Caskroom/miniforge/base/envs/dev310/bin/python</string>
+		<string>/Users/adriencaudron/CODE/adrienCAD.github.io/upload_console_output.py</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/adriencaudron/CODE/adrienCAD.github.io/upload_console_output_error.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/adriencaudron/CODE/adrienCAD.github.io/upload_console_output.log</string>
+	<key>StartInterval</key>
+	<integer>3600</integer>
 </dict>
 </plist>

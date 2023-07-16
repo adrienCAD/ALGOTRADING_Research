@@ -1,10 +1,10 @@
-import xgboost as xgb
 import alpaca_trade_api as tradeapi
 from finta import TA
 import pickle
 import os
 import sys
 import time
+from datetime import datetime
 from dotenv import load_dotenv
 import pandas as pd
 
@@ -14,12 +14,14 @@ load_dotenv()
 # Set Alpaca API key and secret
 alpaca_api_key = os.getenv('ALPACA_API_KEY')
 alpaca_secret_key = os.getenv('ALPACA_SECRET_KEY')
+model_path = os.getenv('ALPHAJET_MODEL_PATH')
 
-# Import saved XGB model
-papertrading_model = pickle.load(open('lda_classifier.pkl', 'rb'))
+# Import saved LDA model
+#model_path = "/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/"
+papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
 
 # Load scaler model
-scaler = pickle.load(open('scaler_model.pkl', 'rb'))
+scaler = pickle.load(open(model_path + 'scaler_model.pkl', 'rb'))
 
 # Define list of features
 feats = ['SMA_5', 'RSI_5', 'VAMA_7', 'RSI_14', 'SMA_20', 'RSI_20', 'SMA_50',
@@ -29,14 +31,24 @@ feats = ['SMA_5', 'RSI_5', 'VAMA_7', 'RSI_14', 'SMA_20', 'RSI_20', 'SMA_50',
 # Initialize Alpaca API
 alpaca_api = tradeapi.REST(alpaca_api_key, alpaca_secret_key, 'https://paper-api.alpaca.markets')
 
+# Check the time
+current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
 # Check if the API is running
 try:
     account_info = alpaca_api.get_account()
-    print(f"Alpaca REST API is running! Status is {account_info.status} for account #{account_info.account_number} ")
+    print(f"{current_time} - Alpaca REST API {account_info.status} - account #{account_info.account_number}")
+    
 except Exception as e:
-    print("Error getting account info:", e)
+    print(f"{current_time} - Error getting account info: {e}")
 
-while True:
+# Initialize previous_buy variable to store the previous BUY state
+previous_buy = None
+
+def execute_trade():
+    # Declare 'previous_buy' as a global variable to update it within the function
+    global previous_buy
+
     # Get latest data on 1HR timeframe
     data_trade = alpaca_api.get_crypto_bars(['ETH/USDT'], tradeapi.TimeFrame.Hour, "2023-03-01").df
 
@@ -69,7 +81,7 @@ while True:
 
     # Calculate the quantity of BTC to buy or sell
     usd_balance = float(alpaca_api.get_account().cash)
-    quantity_to_trade = usd_balance / eth_usd_price * 0.1
+    quantity_to_trade = usd_balance / eth_usd_price
 
     # Define order parameters
     symbol = 'ETHUSD'
@@ -78,44 +90,54 @@ while True:
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    # check if BUY value changed from previous time
-    if 'previous_buy' not in locals():
-        previous_buy = BUY
+    # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
+    if previous_buy is None:
+        previous_buy = 0 #BUY using 1 for testing
 
+    print("Prediction: BUY - " if BUY else "Prediction: SELL - ", end='')
+    
     if BUY != previous_buy:
         if BUY:
             side = 'buy'
             limit_price += 0.0001
+            # Place a buy order for all available USD capital
+            try:
+                order = alpaca_api.submit_order(
+                    symbol=symbol,
+                    qty=qty,
+                    side=side,
+                    type=order_type,
+                    time_in_force=time_in_force,
+                    limit_price=limit_price
+                )
+                print(f"{side.capitalize()} order for {qty:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+            except Exception as e:
+                print(f"Error submitting {side.capitalize()} order: ", e)
+
         else:
             side = 'sell'
-            qty = float(alpaca_api.get_position(symbol).qty) /96 # quantity of ETH to sell using DCA of 4 days (96hr)
-            limit_price -= 0.0001
+            eth_qty = float(alpaca_api.get_position(symbol).qty)
+            if eth_qty * eth_usd_price >= 10:
+                qty_to_sell = eth_qty / 3
+                limit_price -= 0.0001
 
-        # Place order
-        try:
-            order = alpaca_api.submit_order(
-                symbol=symbol,
-                qty=qty,
-                side=side,
-                type=order_type,
-                time_in_force=time_in_force,
-                limit_price=limit_price
-            )
-            print(f"{side.capitalize()} order for {qty} {symbol} at {limit_price} submitted successfully.")
-
-        except Exception as e:
-            print(f"Error submitting {side.capitalize()} order: ", e)
+                try:
+                    order = alpaca_api.submit_order(
+                        symbol=symbol,
+                        qty=qty_to_sell,
+                        side=side,
+                        type=order_type,
+                        time_in_force=time_in_force,
+                        limit_price=limit_price
+                    )
+                    print(f"{side.capitalize()} order for {qty_to_sell:.4f} {symbol} at {limit_price:.4f} submitted successfully.")
+                except Exception as e:
+                    print(f"Error submitting {side.capitalize()} order: ", e)
 
         # Update previous_buy value
         previous_buy = BUY
-    else :
+    else:
         print('.', end='')
 
-
-    # Wait 1 hour then check again
-    time.sleep(3600)
-
-# Redirect output to log file
-with open('alpaca_script.log', 'a') as f:
-    sys.stdout = f
-    sys.stderr = f
+if __name__ == "__main__":
+    execute_trade()

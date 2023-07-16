@@ -1,3 +1,4 @@
+####################### IMPORTS #######################
 import alpaca_trade_api as tradeapi
 from finta import TA
 import pickle
@@ -17,34 +18,13 @@ alpaca_secret_key = os.getenv('ALPACA_SECRET_KEY')
 model_path = os.getenv('ALPHAJET_MODEL_PATH')
 
 # Import saved LDA model
-#model_path = "/Users/adriencaudron/BOOTCAMP/Playground/AlphaJet2.0/ALGOTRADING_Research/Coding_Experiments/Deployment/"
 papertrading_model = pickle.load(open(model_path + 'lda_classifier.pkl', 'rb'))
 
 # Load scaler model
 scaler = pickle.load(open(model_path + 'scaler_model.pkl', 'rb'))
 
-# Define list of features
-feats = ['SMA_5', 'RSI_5', 'VAMA_7', 'RSI_14', 'SMA_20', 'RSI_20', 'SMA_50',
-       'HMA_50', 'ATR_50', 'EMA_100', 'VAMA_100', 'ATR_100', 'SMA_150',
-       'ATR_200', 'BB_MED']
 
-# Initialize Alpaca API
-alpaca_api = tradeapi.REST(alpaca_api_key, alpaca_secret_key, 'https://paper-api.alpaca.markets')
-
-# Check the time
-current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-# Check if the API is running
-try:
-    account_info = alpaca_api.get_account()
-    print(f"{current_time} - Alpaca REST API {account_info.status} - account #{account_info.account_number}")
-    
-except Exception as e:
-    print(f"{current_time} - Error getting account info: {e}")
-
-# Initialize previous_buy variable to store the previous BUY state
-previous_buy = None
-
+####################### FUNCTIONS ##########################
 def wait_for_order_execution(order, timeout=180, check_interval=10):
     start_time = time.time()
     side = order.side
@@ -52,7 +32,7 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
     while True:
         current_time = time.time()
         if current_time - start_time >= timeout:
-            print(f"{current_time} - Order execution timed out. Resubmitting the order with an updated price.")
+            print(f"{displayed_time} - Order execution timed out. Resubmitting the order with an updated price.")
 
             # Cancel the previous order
             alpaca_api.cancel_order(order.id)
@@ -74,21 +54,38 @@ def wait_for_order_execution(order, timeout=180, check_interval=10):
                     time_in_force=order.time_in_force,
                     limit_price=new_limit_price
                 )
-                print(f"{current_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
+                print(f"{displayed_time} - {side.capitalize()} order for {order.qty} {order.symbol} at {new_limit_price} submitted successfully.")
                 order = new_order
                 start_time = current_time
             except Exception as e:
-                print(f"{current_time} - Error resubmitting {side.capitalize()} order: ", e)
+                print(f"{displayed_time} - Error resubmitting {side.capitalize()} order: ", e)
 
         order_status = alpaca_api.get_order(order.id).status
         if order_status == 'filled':
-            print(f"{current_time} - Order executed successfully.")
+            print(f"{displayed_time} - Order executed successfully.")
             break
         elif order_status in ('canceled', 'rejected'):
-            print(f"{current_time} - Order {order_status}.")
+            print(f"{displayed_time} - Order {order_status}.")
             break
 
         time.sleep(check_interval)
+        
+
+def read_write_previous_buy(file_name, value=None):
+    if value is None:
+        # Read the previous_buy value from the file
+        try:
+            with open(file_name, 'r') as file:
+                previous_buy = int(float(file.read().strip())) # Convert to float first, then to int
+        except FileNotFoundError:
+            previous_buy = None
+    else:
+        # Write the new value of previous_buy to the file
+        with open(file_name, 'w') as file:
+            file.write(str(value))
+        previous_buy = int(value)
+
+    return previous_buy
 
 
 def execute_trade():
@@ -127,7 +124,7 @@ def execute_trade():
 
     # Calculate the quantity of BTC to buy or sell
     usd_balance = float(alpaca_api.get_account().cash)
-    quantity_to_trade = usd_balance / eth_usd_price *.9 #using 90% of the avail. balance.
+    quantity_to_trade = usd_balance / eth_usd_price *.95 #using 95% of the avail. balance.
 
     # Define order parameters
     symbol = 'ETHUSD'
@@ -136,13 +133,14 @@ def execute_trade():
     time_in_force = 'gtc'
     qty = quantity_to_trade  # quantity of ETH to trade
 
-    # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
-    if previous_buy is None:
-        previous_buy = 0 #BUY normally - I use 1 or 0 for testing for now
-
-    print("Prediction: BUY" if BUY else "Prediction: SELL")
+    print("Prediction: BUY - " if BUY else "Prediction: SELL - ", end='')
     
-    if BUY != previous_buy:
+    if (BUY != previous_buy) or (previous_buy is None) :
+
+        # If previous_buy is None, it means this is the first run, and we need to set its value to the current BUY state
+        if previous_buy is None:
+            previous_buy = read_write_previous_buy(previous_buy_file, BUY) #use the value 1 or 0 for testing purposes and "forcing" the switch
+
         if BUY:
             side = 'buy'
             limit_price += 0.0001
@@ -183,7 +181,40 @@ def execute_trade():
                     print(f"Error submitting {side.capitalize()} order: ", e)
 
         # Update previous_buy value
-        previous_buy = BUY
+        previous_buy = read_write_previous_buy(previous_buy_file, BUY)
+
+    else :
+        print("Waiting for next SELL opportunity" if BUY else "Waiting for next BUY opportunity")
+
+####################### MAIN #######################
+
+# Define list of features
+feats = ['SMA_5', 'RSI_5', 'VAMA_7', 'RSI_14', 'SMA_20', 'RSI_20', 'SMA_50',
+       'HMA_50', 'ATR_50', 'EMA_100', 'VAMA_100', 'ATR_100', 'SMA_150',
+       'ATR_200', 'BB_MED']
+
+# Initialize Alpaca API
+alpaca_api = tradeapi.REST(alpaca_api_key, alpaca_secret_key, 'https://paper-api.alpaca.markets')
+
+# Check the time
+current_time = displayed_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+# Check if the API is running
+try:
+    account_info = alpaca_api.get_account()
+    print(f"{displayed_time} - Alpaca REST API {account_info.status} - PAPER-TRADING account #{account_info.account_number}")
+    
+except Exception as e:
+    print(f"{displayed_time} - Error getting account info: {e}")
+
+# Get the alpaca script's directory
+script_directory = os.path.dirname(os.path.realpath(__file__))
+
+# Initialize previous_buy variable to store the previous BUY state
+data_directory = os.path.join(script_directory, "data")
+os.makedirs(data_directory, exist_ok=True)
+previous_buy_file = os.path.join(data_directory, 'previous_buy.txt')
+previous_buy = read_write_previous_buy(previous_buy_file)
 
 if __name__ == "__main__":
     execute_trade()
