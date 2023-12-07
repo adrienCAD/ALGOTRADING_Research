@@ -2,16 +2,16 @@
 
 ## To-Do:
 ### ML Model :
-- try an three-gate approach using clustering or simple cutoffs to define strong sell / sell / hold / buy/ strong buy, then run a ML multi-class classification on top of it. 
-    - find a way to fix the class imbalance problem with time series for the ML training 
+- try an three-gate approach using clustering or simple cutoffs to define strong sell / sell / hold / buy/ strong buy, then run a ML multi-class classification on top of it.
+    - find a way to fix the class imbalance problem with time series for the ML training
 - possibly use fear and greed index for sentiment analysis
 - save 1st models to JSON
 
-### REST-API: 
-- find the easiest way to create a REST API connecting to Alpaca 
+### REST-API:
+- find the easiest way to create a REST API connecting to Alpaca
 
 
-## Plan: 
+## Plan:
 
 - use a web framework like Flask or FastAPI to build a REST API that connects to the Alpaca API. This will allow to get the new prices and send buy/sell orders.
 
